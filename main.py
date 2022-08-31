@@ -43,7 +43,7 @@ keep_alive()
 prefix = '='
 #use the .env feature to hide your token
 token = ("OTAxNTgxMjU2MjgwNjQ1Njgy.GuvP0X.WXCbIlMLd4sJOKmSCo0Z3NA_ml0LvdvxQhttB4")
-bot = commands.Bot(command_prefix=prefix, help_command=None, case_insensitive=True, self_bot=True)
+bot = commands.Bot(command_prefix=prefix, self_bot=True)
 
 @bot.command()
 async def help(ctx):
