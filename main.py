@@ -1,49 +1,45 @@
-#rip embed
 import discord
-import json
 import random
-import time
 from discord.ext import commands
 import colorama
 from colorama import Fore
 import asyncio
-from webserver import keep_alive
 import os
-import requests
-import string
-
-configFile = {"isGrinding": False,"isTeamChecking": False,"currentRouteGrinding": None,"currentMoveRunning": None}
-
-try:
-    if os.stat("config.json").st_size == 0:
-        with open("config.json", "w") as f:
-            json.dump(configFile, f, indent=2)
-        print("Successfully Write the config!")
-except:
-    with open("config.json", "a+") as f:
-        json.dump(configFile, f, indent=2)
-    print("Successfully Write the config!")
-
-with open("config.json", "r") as f:
-    config = json.load(f)
-
-def setItem(keyName, keyValue):
-  global config
-  global f
-  try:
-    config[keyName] = keyValue
-    with open(json_file, 'w') as json_file:
-      json.dump(config, f, indent=2)
-  except:
-    print(Fore.RED + "Failed to edit key!")
-
-keep_alive()
 
 #-----SETUP-----#
-prefix = '='
+
+prefix = "-"
+
 #use the .env feature to hide your token
-token = ("OTAxNTgxMjU2MjgwNjQ1Njgy.GuvP0X.WXCbIlMLd4sJOKmSCo0Z3NA_ml0LvdvxQhttB4")
-bot = commands.Bot(command_prefix=prefix, self_bot=True)
+
+
+token = (os.environ['TOKEN'])
+
+#---------------#
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix=prefix,
+                   help_command=None,
+                   case_insensitive=True,
+                   self_bot=True,
+                   intents=intents)
+
+
+
+
+
+
+@bot.event
+async def on_ready():
+    activity = discord.Game(name="OwO", type=4)
+    await bot.change_presence(status=discord.Status.idle, activity=activity)
+    
+
+print('''THANKS FOR USING THIS SELF BOT IS READY USE -help TO KNOW ALL COMMANDS 
+
+selfbot is ready!
+''')
+
 
 @bot.command()
 async def help(ctx):
@@ -63,9 +59,9 @@ async def start(ctx):
 	global dmcs
 	dmcs = True
 	while dmcs:
-			await ctx.send('.route 25')
-			await asyncio.sleep(2)
-			await ctx.send(random.randint(2, 4))
+			await ctx.send('.route 24')
+			await asyncio.sleep(3)
+			await ctx.send(random.randint(1,4))
 			await asyncio.sleep(1.5)
 	
 @bot.command()
@@ -97,28 +93,13 @@ OS ITENS USADOS PARA TREINO DE EV **
 **->** Power lens +8 spa ev
   """)
 
-@bot.event
-async def on_ready():
-  activity = discord.Activity(type=discord.ActivityType.watching, name="Ur mom")
-  await bot.change_presence(status=discord.Status.do_not_disturb, activity=activity)
-  
-  print(f'''
-{Fore.BLUE}
-███╗░░░███╗██╗░░░██╗██╗░░░██╗██╗░░░██╗
-████╗░████║╚██╗░██╔╝██║░░░██║██║░░░██║
-██╔████╔██║░╚████╔╝░██║░░░██║██║░░░██║
-██║╚██╔╝██║░░╚██╔╝░░██║░░░██║██║░░░██║
-██║░╚═╝░██║░░░██║░░░╚██████╔╝╚██████╔╝
-╚═╝░░░░░╚═╝░░░╚═╝░░░░╚═════╝░░╚═════╝░
-░██████╗░██████╗░██╗███╗░░██╗██████╗░███████╗██████╗░
-██╔════╝░██╔══██╗██║████╗░██║██╔══██╗██╔════╝██╔══██╗
-██║░░██╗░██████╔╝██║██╔██╗██║██║░░██║█████╗░░██████╔╝
-██║░░╚██╗██╔══██╗██║██║╚████║██║░░██║██╔══╝░░██╔══██╗
-╚██████╔╝██║░░██║██║██║░╚███║██████╔╝███████╗██║░░██║
-░╚═════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝
-''')
+            
+# @bot.command()
+# async def stopautoOwO(ctx):
+#     await ctx.message.delete()
+#     await ctx.send('auto OwO Magi is now **disabled**!')
+#     global dmcs
+#     dmcs = False
 
-try:
-  bot.run(token, bot=False)
-except:
-  print("Invaild Token!")
+
+bot.run(token, bot=False)
