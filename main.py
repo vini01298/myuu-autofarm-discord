@@ -32,16 +32,27 @@ async def help(ctx):
 """)
   
 @client.command()
-async def start(ctx):
-	await ctx.message.delete()
-	await ctx.send('Ativado com sucesso, Auto Farm Myuu! | by **vinikkz**')
-	global dmcs
-	dmcs = True
-	while dmcs:
-			await ctx.send('.route 25')
-			await asyncio.sleep(3)
-			await ctx.send(random.randint(1,4))
-			await asyncio.sleep(1.5)
+async def start(ctx, route: int, move: int):
+
+    if not 1 <= int(route) <= 25:
+      async def on_command_error(ctx, error):
+        await ctx.send('Selecione a route de 1 a 25!', delete_after=3)
+        await ctx.send(f'Usar: {prefix}start route move', delete_after=10)
+        return
+
+    if not 1 <= int(move) <= 4:
+        await ctx.send('Selecione o atack de 1 a 4!', delete_after=3)
+        await ctx.send(f'Usar: {prefix}start route move', delete_after=10)
+        return
+    await ctx.send('Successfully enabled Auto Myuu Grinder!')
+    global dmcs
+    dmcs = True
+    while dmcs:
+        await ctx.send(f'.route {route}')
+        await asyncio.sleep(3)
+        await ctx.send(move)
+        await asyncio.sleep(1.5)
+
 
 @client.command()
 async def stop(ctx):
