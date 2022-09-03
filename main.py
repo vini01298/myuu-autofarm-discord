@@ -38,7 +38,7 @@ async def start(ctx):
 	global dmcs
 	dmcs = True
 	while dmcs:
-			await ctx.send('.route 24')
+			await ctx.send('.route 25')
 			await asyncio.sleep(3)
 			await ctx.send(random.randint(1,4))
 			await asyncio.sleep(1.5)
