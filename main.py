@@ -1,38 +1,18 @@
 import discord
-import random
 from discord.ext import commands
-import colorama
-from colorama import Fore
 import asyncio
+import random
 import os
-
-#-----SETUP-----#
 
 prefix = "-"
 
-#use the .env feature to hide your token
-
-
+client = commands.Bot(command_prefix=prefix, self_bot=True, help_command=None)
 token = (os.environ['TOKEN'])
 
-#---------------#
-intents = discord.Intents.default()
-intents.message_content = True
-bot = commands.Bot(command_prefix=prefix,
-                   help_command=None,
-                   case_insensitive=True,
-                   self_bot=True,
-                   intents=intents)
-
-
-
-
-
-
-@bot.event
+@client.event
 async def on_ready():
-    activity = discord.Game(name="OwO", type=4)
-    await bot.change_presence(status=discord.Status.idle, activity=activity)
+    activity = discord.Game(name="", type=4)
+    await client.change_presence(status=discord.Status.idle, activity=activity)
     
 
 print('''THANKS FOR USING THIS SELF BOT IS READY USE -help TO KNOW ALL COMMANDS 
@@ -40,19 +20,18 @@ print('''THANKS FOR USING THIS SELF BOT IS READY USE -help TO KNOW ALL COMMANDS
 selfbot is ready!
 ''')
 
-
-@bot.command()
+@client.command()
 async def help(ctx):
   await ctx.message.delete()
   await ctx.send(f"""
 **Lista de Comandos:**
-**{prefix}help** - Ajuda Comando
+**{prefix}help** - Ajuda comandos!
 **{prefix}start** - Inicia o bot!
 **{prefix}stop** - Para o bot!
 **{prefix}evtrain** - Ajuda a treina Ev's
 """)
-
-@bot.command()
+  
+@client.command()
 async def start(ctx):
 	await ctx.message.delete()
 	await ctx.send('Ativado com sucesso, Auto Farm Myuu! | by **vinikkz**')
@@ -63,15 +42,15 @@ async def start(ctx):
 			await asyncio.sleep(3)
 			await ctx.send(random.randint(1,4))
 			await asyncio.sleep(1.5)
-	
-@bot.command()
+
+@client.command()
 async def stop(ctx):
 	await ctx.message.delete()
 	await ctx.send('Desativado com sucesso, Auto Farm Myuu! | by **vinikkz**')
 	global dmcs
 	dmcs = False 
-  
-@bot.command()
+
+@client.command()
 async def evtrain(ctx):
 	await ctx.message.delete()
 	await ctx.send("""
@@ -93,13 +72,4 @@ OS ITENS USADOS PARA TREINO DE EV **
 **->** Power lens +8 spa ev
   """)
 
-            
-# @bot.command()
-# async def stopautoOwO(ctx):
-#     await ctx.message.delete()
-#     await ctx.send('auto OwO Magi is now **disabled**!')
-#     global dmcs
-#     dmcs = False
-
-
-bot.run(token, bot=False)
+client.run(token, bot=False)
