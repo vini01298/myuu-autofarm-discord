@@ -1,6 +1,4 @@
-discord
-colorama
-Fore
-keep_alive
-requests
-flask
+discord.py==1.7.3
+os
+random
+asyncio
