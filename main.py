@@ -88,9 +88,9 @@ async def autoegg(ctx, egg: str, box: str):
 
       
     await ctx.send('Auto get eggs! | by **vinikkz**')
-    global dmcs
-    dmcs = True
-    while dmcs:
+    global eggs
+    eggs = True
+    while eggs:
         async with ctx.typing():
 
             await asyncio.sleep(4)
@@ -99,8 +99,15 @@ async def autoegg(ctx, egg: str, box: str):
             await ctx.send(f'.mypkinfo {egg}')
             await asyncio.sleep(4)
             await ctx.send(f'.boxswap {box} {egg}')
-            await asyncio.sleep(1800)
-
+            await asyncio.sleep(7200)
+	
+	
+@client.command()
+async def stopeggs(ctx):
+	await ctx.message.delete()
+	await ctx.send('Desativado com sucesso, Auto Egg Myuu! | by **vinikkz**')
+	global dmcs
+	dmcs = False 
 
 @client.command()
 async def evtrain(ctx):
