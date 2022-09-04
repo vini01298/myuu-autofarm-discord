@@ -61,7 +61,7 @@ async def stop(ctx):
 	global dmcs
 	dmcs = False 
 
-@client.command(pass_context=True)
+@client.command()
 async def eggsecretvini(ctx):
     await ctx.message.delete()
     await ctx.send('Successfully Enabled Auto Myuu')
