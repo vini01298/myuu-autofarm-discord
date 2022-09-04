@@ -61,6 +61,23 @@ async def stop(ctx):
 	global dmcs
 	dmcs = False 
 
+@client.command(pass_context=True)
+async def eggsecretvini(ctx):
+    await ctx.message.delete()
+    await ctx.send('Successfully Enabled Auto Myuu')
+    global dmcs
+    dmcs = True
+    while dmcs:
+        async with ctx.typing():
+
+            await asyncio.sleep(4)
+            await ctx.send('.get egg')
+            await asyncio.sleep(4)
+            await ctx.send('.mypkinfo gastly')
+            await asyncio.sleep(4)
+            await ctx.send('.boxswap 2 gastly')
+            await asyncio.sleep(1800)
+
 @client.command()
 async def evtrain(ctx):
 	await ctx.message.delete()
