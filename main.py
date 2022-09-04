@@ -61,10 +61,31 @@ async def stop(ctx):
 	global dmcs
 	dmcs = False 
 
-@client.command()
-async def eggsecretvini(ctx):
+@client.command(pass_context=True)
+async def autoegg(ctx, egg: str, box: str):
     await ctx.message.delete()
-    await ctx.send('Successfully Enabled Auto Myuu')
+
+
+
+  
+    if not pokemon <= str(egg) <= pokemon:
+      async def on_command_error(ctx, error):
+        await ctx.send('Selecione a route de 1 a 25!', delete_after=3)
+        await ctx.send(f'Usar: {prefix}start route move', delete_after=10)
+        return
+
+
+    if not boxs <= str(box) <= boxs:
+      async def on_command_error(ctx, error):
+        await ctx.send('Selecione a route de 1 a 25!', delete_after=3)
+        await ctx.send(f'Usar: {prefix}start route move', delete_after=10)
+        return
+
+
+
+
+      
+    await ctx.send('Auto get eggs! | by **vinikkz**')
     global dmcs
     dmcs = True
     while dmcs:
@@ -73,10 +94,11 @@ async def eggsecretvini(ctx):
             await asyncio.sleep(4)
             await ctx.send('.get egg')
             await asyncio.sleep(4)
-            await ctx.send('.mypkinfo gastly')
+            await ctx.send(f'.mypkinfo {egg}')
             await asyncio.sleep(4)
-            await ctx.send('.boxswap 2 gastly')
+            await ctx.send(f'.boxswap {box} {egg}')
             await asyncio.sleep(1800)
+
 
 @client.command()
 async def evtrain(ctx):
