@@ -106,8 +106,8 @@ async def autoegg(ctx, egg: str, box: str):
 async def stopeggs(ctx):
 	await ctx.message.delete()
 	await ctx.send('Desativado com sucesso, Auto Egg Myuu! | by **vinikkz**')
-	global dmcs
-	dmcs = False 
+	global eggs
+	eggs = False 
 
 @client.command()
 async def evtrain(ctx):
