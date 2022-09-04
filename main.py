@@ -5,6 +5,8 @@ import random
 import os
 
 prefix = "-"
+pokemon = ""
+boxs = ""
 
 client = commands.Bot(command_prefix=prefix, self_bot=True, help_command=None)
 token = (os.environ['TOKEN'])
