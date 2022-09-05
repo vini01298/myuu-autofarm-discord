@@ -94,12 +94,12 @@ async def autoegg(ctx, egg: str, box: str):
         async with ctx.typing():
 
             await asyncio.sleep(4)
-            await ctx.send(f'.boxswap {box} {egg}')
-            await asyncio.sleep(4)
             await ctx.send(f'.mypkinfo {egg}')
             await asyncio.sleep(4)
+            await ctx.send(f'.boxswap {box} {egg}')
+            await asyncio.sleep(4)
             await ctx.send('.get egg')
-            await asyncio.sleep(5400)
+            await asyncio.sleep(5700)
 	
 	
 @client.command()
