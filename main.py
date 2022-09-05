@@ -31,6 +31,8 @@ async def help(ctx):
 **{prefix}start** - Inicia o bot!
 **{prefix}stop** - Para o bot!
 **{prefix}evtrain** - Ajuda a treina Ev's
+**{prefix}autoegg (pokemon) (box) - Auto breending!
+**{prefix}stopegg - Para o autoegg!
 """)
   
 @client.command()
