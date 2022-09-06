@@ -32,7 +32,7 @@ async def help(ctx):
 **{prefix}stop** - Para o bot!
 **{prefix}evtrain** - Ajuda a treina Ev's
 **{prefix}autoegg (pokemon) (box)** - Auto breending!
-**{prefix}stopeggs - Para o autoegg!
+**{prefix}stopeggs** - Para o autoegg!
 """)
   
 @client.command()
